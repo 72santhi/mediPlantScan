@@ -1,0 +1,25 @@
+<html>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script>
+      async function loadModel() {
+        console.log("started");
+        const model = await tf.loadLayersModel('model.json');
+        console.log("model loaded");
+        const image = await tf.browser.fromPixels("C:\Users\Santhi_311\Documents\WorkSpace\MedicinalPlant\Medicinal Leaf Dataset\Segmented Medicinal Leaf Images\Azadirachta Indica (Neem)\AI-S-004.jpg");
+        const resizedImage = tf.image.resizeBilinear(image, [299, 299]);
+        const normalized = tf.cast(image, 'float32') / 255.0;
+        const expanded = tf.expandDims(normalized, 0);
+        const predictions = model.predict(expanded);
+        console.log(predictions)
+
+    }
+
+      (async () => {
+        await loadModel(); // Await the model loading
+      })();
+    </script>
+  </body>
+</html>
+
+

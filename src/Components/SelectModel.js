@@ -10,7 +10,7 @@ const SelectModel = ({ imageUrl, closeModal }) => {
     closeModal(); // Close the modal when a model is selected
 
     // Call the predictPlant function with the selected model
-    const result = await predictPlant(imageUrl, modelName);
+    const result = await predictPlant(imageUrl);
     
     // Update the state with the prediction result
     setPredictionResult(result);
@@ -42,7 +42,7 @@ const SelectModel = ({ imageUrl, closeModal }) => {
               <button
                 type="button"
                 className="model-b"
-                onClick={() => handleModelSelection("InceptionV3")}
+                onClick={() => handleModelSelection()}
               >
                 InceptionV3
               </button>
