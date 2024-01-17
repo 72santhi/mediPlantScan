@@ -1,25 +1,52 @@
 
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import SelectModel from './SelectModel'; 
+import { animateScroll as scroll } from 'react-scroll';
+
 const Home = () => {
 
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
-
+  const resultWrapperRef = useRef(null);
+  const [showModal, setShowModal] = useState(false);
+  const [predictionResult, setPredictionResult] = useState(null);
 
   const handleImageUpload = (event) => {
     if (event.target.files && event.target.files.length > 0) {
       const imageURL = URL.createObjectURL(event.target.files[0]); // Get the URL of the selected image
       setSelectedImage(imageURL);
+      console.log(imageURL);
+      console.log("Home.js");
+      setPredictionResult(null); // Reset prediction result when a new image is selected
+      setShowModal(true);
     }
   };
 
-  const handleClick = () => {
-    fileInputRef.current.click();
+  const handleCloseModal = (result) => {
+    setShowModal(false); // Close the modal
+    setPredictionResult(result); // Set the prediction result in Home.js
   };
 
-  const closeModal = () => {
-    setSelectedImage(null);
+  useEffect(() => {
+    if (predictionResult !== null && resultWrapperRef.current) {
+      scroll.scrollTo(resultWrapperRef.current.offsetTop - 50, {
+        duration: 500,
+        delay: 0,
+        smooth: 'easeInOutQuart',
+      });
+    }
+  }, [predictionResult]);
+
+  const openSelectModal = () => {
+    if (selectedImage && predictionResult === null) {
+      return <SelectModel imageUrl={selectedImage} onCloseModal={handleCloseModal} />;
+    }
+    return null;
+  };
+
+
+  const handleClick = () => {
+    fileInputRef.current.click();
   };
 
 
@@ -29,6 +56,7 @@ const Home = () => {
       <h1 className = "entry-title" itemProp = "headline">Medicinal Plant Detector</h1>
     
       <div className="entry-container" itemProp='text'>
+
         <div className='box'>
           <img src="/Assests/download.jpg" alt="Preview" />
           <p>Take a selfie and click Detect Now</p>
@@ -43,12 +71,25 @@ const Home = () => {
             accept="image/*"
             style={{ display: 'none' }}
           />
-
         </div>
       </div>
 
       
-      {selectedImage && <SelectModel imageUrl={selectedImage} closeModal={closeModal} />}
+      {showModal && openSelectModal()}
+
+
+      {predictionResult !== null && (
+        <div ref={resultWrapperRef}>
+          <div className="result-container">
+            <div className="result-content">
+              <h3>Prediction Result:</h3>
+              <img src={selectedImage} alt="Selected" />
+              <p>{predictionResult}</p>
+            </div>
+          </div>
+        </div>
+      )}
+      
 
       <div className='usage-guide'>
         <h1>Usage Guide</h1>

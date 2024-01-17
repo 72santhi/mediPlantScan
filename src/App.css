@@ -104,7 +104,7 @@ body{
 .box {
   border: 3px green;
   box-shadow: 0 0 8px green;
-  padding: 25px;
+  padding: 30px;
   text-align: center;
   border-radius: 6px;
   display: flex;
@@ -122,18 +122,7 @@ body{
   cursor: pointer;
 }
 
-.detect-button {
-  background-color: green;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: auto; 
-  margin-right: auto;
-  margin-top: 20px; /* Add space between the box and button */
-  display: block;
-}
+
 
 .entry-container {
   max-width: 600px; /* Set your desired box width */
@@ -295,14 +284,18 @@ body{
 }
 
 .left-container{
-  width: 50%;
+  width: 70%;
   padding: 20px;
   align-items: centre;
 }
 
 .left-container img {
-  max-width: 300px; /* Replace 500px with your desired fixed width */
-  height: 350px; 
+  /* Set the height to the desired size */
+  /* You can also use other CSS properties like max-width and max-height
+     to maintain the aspect ratio and prevent stretching. */
+  max-width: 100%;
+  max-height: 100%;
+  /*object-fit: none;*/
 }
 
 .right-container{
@@ -329,3 +322,25 @@ body{
   margin-right: auto;
   display: block;
 }
+
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.result-content {
+  text-align: center;
+  
+}
+
+.result-content img {
+  max-width: 100%;
+  max-height: 300px; 
+  margin-bottom: 10px;
+}
+
+
+/* Add any other styles as needed */
