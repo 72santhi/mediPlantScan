@@ -4,8 +4,8 @@ import { predictPlant } from './plant-prediction.js';
 const SelectModel = ({ imageUrl, onCloseModal}) => {
   //const [predictionResult, setPredictionResult] = useState(null);
 
-  const handleModelSelection = async () => {
-    const result = await predictPlant(imageUrl);
+  const handleModelSelection = async (model) => {
+    const result = await predictPlant(imageUrl, model);
     //setPredictionResult(result);
     // Pass the prediction result to the callback in Home.js
     onCloseModal(result);
@@ -28,11 +28,33 @@ const SelectModel = ({ imageUrl, onCloseModal}) => {
               type="button"
               className="model-b"
               onClick={() => {
-                handleModelSelection();
+                handleModelSelection("InceptionV3");
                 onCloseModal(null); // Close the modal after handling the model selection
               }}
             >
               InceptionV3
+            </button>
+
+            <button
+              type="button"
+              className="model-b"
+              onClick={() => {
+                handleModelSelection("VGG16");
+                onCloseModal(null); // Close the modal after handling the model selection
+              }}
+            >
+              VGG16
+            </button>
+
+            <button
+              type="button"
+              className="model-b"
+              onClick={() => {
+                handleModelSelection("Ensembled_model");
+                onCloseModal(null); // Close the modal after handling the model selection
+              }}
+            >
+              Ensembled VGG16 & VGG19
             </button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-const predictPlant = async (imageUrl) => {
+const predictPlant = async (imageUrl, model) => {
   try {
     try {
       // 1. Fetch image data from blob URL
@@ -8,6 +8,7 @@ const predictPlant = async (imageUrl) => {
       // 2. Send image data to Flask backend using FormData
       const formData = new FormData();
       formData.append('image', blob);
+      formData.append('model', model);
 
       const response = await fetch('http://127.0.0.1:5000/predict', {
         method: 'POST',

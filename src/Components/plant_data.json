@@ -1,0 +1,60 @@
+{
+    "plants": [
+      {
+        "name": "Mango",
+        "scientificName": "Mangifera indica",
+        "medicinalBenefits": "Mango leaves are used in traditional medicine for various purposes. They are believed to have anti-inflammatory and antioxidant properties.",
+        "facts": "Mango is a tropical fruit known for its sweet taste and juicy flesh.",
+        "whereToObtain": "Mango trees are commonly found in tropical and subtropical regions. Fruits can be obtained from local markets.",
+        "prosAndCons": {
+          "pros": ["Rich in vitamins", "Delicious fruit", "Used in traditional medicine"],
+          "cons": ["Potential allergic reactions"]
+        }
+      },
+      {
+        "name": "Betel",
+        "scientificName": "Piper betle",
+        "medicinalBenefits": "Betel leaves are often chewed for their stimulant properties. They are also used in traditional medicine for various health benefits.",
+        "facts": "Betel is a vine belonging to the Piperaceae family, and its leaves are commonly chewed with areca nut and slaked lime.",
+        "whereToObtain": "Betel leaves are available in local markets and can be grown in home gardens.",
+        "prosAndCons": {
+          "pros": ["Stimulant properties", "Traditional medicinal uses", "Cultural significance"],
+          "cons": ["May cause stains on teeth", "Health risks with excessive use"]
+        }
+      },
+      {
+        "name": "Tulsi",
+        "scientificName": "Ocimum tenuiflorum",
+        "medicinalBenefits": "Tulsi, or holy basil, is considered sacred in Ayurveda. It is known for its anti-inflammatory and antioxidant properties.",
+        "facts": "Tulsi is an aromatic herb with green leaves and a strong, pleasant aroma.",
+        "whereToObtain": "Tulsi plants can be grown at home, and leaves are also available in herbal stores.",
+        "prosAndCons": {
+          "pros": ["Sacred herb", "Medicinal uses", "Aromatic leaves"],
+          "cons": ["May cause allergic reactions in some individuals"]
+        }
+      },
+      {
+        "name": "Mint",
+        "scientificName": "Mentha",
+        "medicinalBenefits": "Mint leaves are known for their refreshing flavor and various health benefits. They are often used in teas and culinary dishes.",
+        "facts": "Mint is a fragrant herb with green leaves and a cooling taste.",
+        "whereToObtain": "Mint is commonly available in grocery stores and can be grown in home gardens.",
+        "prosAndCons": {
+          "pros": ["Refreshing flavor", "Used in culinary dishes", "Digestive benefits"],
+          "cons": ["May be invasive when grown in gardens"]
+        }
+      },
+      {
+        "name": "Curry Leaf",
+        "scientificName": "Murraya koenigii",
+        "medicinalBenefits": "Curry leaves are rich in antioxidants and are believed to have various health benefits. They are commonly used in Indian cuisine.",
+        "facts": "Curry leaf is a small, aromatic leaf often used to add flavor to dishes.",
+        "whereToObtain": "Curry leaf plants can be grown at home, and fresh leaves are available in grocery stores.",
+        "prosAndCons": {
+          "pros": ["Flavorful addition to dishes", "Medicinal uses", "Rich in antioxidants"],
+          "cons": ["Bitter taste for some individuals"]
+        }
+      }
+    ]
+  }
+  
