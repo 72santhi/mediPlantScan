@@ -2,6 +2,8 @@
 import React, { useState, useRef, useEffect } from 'react'
 import SelectModel from './SelectModel'; 
 import { animateScroll as scroll } from 'react-scroll';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+//import PlantData from './plant_data.json';
 
 const Home = () => {
 
@@ -10,6 +12,8 @@ const Home = () => {
   const resultWrapperRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
   const [predictionResult, setPredictionResult] = useState(null);
+
+  
 
   const handleImageUpload = (event) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -44,6 +48,10 @@ const Home = () => {
     return null;
   };
 
+  const handleChangeModel = () => {
+    setPredictionResult(null); // Reset prediction result
+    setShowModal(true); // Open the overlay again
+  };
 
   const handleClick = () => {
     fileInputRef.current.click();
@@ -58,7 +66,7 @@ const Home = () => {
       <div className="entry-container" itemProp='text'>
 
         <div className='box'>
-          <img src="/Assests/download.jpg" alt="Preview" />
+          <img src="/Assests/icon.jpg" alt="Preview" />
           <p>Take a selfie and click Detect Now</p>
           <button type="button" className="upload-button" onClick={handleClick}>
             Upload Image
@@ -72,6 +80,7 @@ const Home = () => {
             style={{ display: 'none' }}
           />
         </div>
+
       </div>
 
       
@@ -82,9 +91,15 @@ const Home = () => {
         <div ref={resultWrapperRef}>
           <div className="result-container">
             <div className="result-content">
-              <h3>Prediction Result:</h3>
+              <h3>Prediction Result:{predictionResult}</h3>
               <img src={selectedImage} alt="Selected" />
-              <p>{predictionResult}</p>
+              <div className='button-class'>
+                <Link to={`/plant/${predictionResult}`} className="info-button" state={{ plantName: predictionResult }}>
+                    Know about {predictionResult}
+                </Link>
+                <span className="or-text">or</span>
+                <button type="button" className="info-button" onClick={handleChangeModel}>Change Model</button>
+              </div>
             </div>
           </div>
         </div>
