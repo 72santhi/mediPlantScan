@@ -13,7 +13,9 @@ CORS(app)
 
 
 # Load the model with custom objects
-model = tf.keras.models.load_model('InceptionV3.h5')
+InceptionV3 = tf.keras.models.load_model("InceptionV3.h5")
+VGG16 = tf.keras.models.load_model("vgg16.h5")
+ensembled = tf.keras.models.load_model("vgg19.h5")
 print("model loaded.....................................................")
 
 # Load your labels
@@ -103,16 +105,22 @@ labels = [
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        
+        form = request.form
         image = request.files['image'].read()
+        model_name = form.get('model')
         img = Image.open(BytesIO(image))
         print(img)
         img_array = tf.keras.preprocessing.image.img_to_array(img)
-        img_array = tf.image.resize(img_array, [299, 299])  # Resize the image if needed
+        img_array = tf.image.resize(img_array, [224, 224])  # Resize the image if needed
         print(img)
         img_array = tf.expand_dims(img_array, 0)
+        if model_name == "InceptionV3":
+            predictions = InceptionV3.predict(img_array)
+        if model_name == "VGG16":
+            predictions = VGG16.predict(img_array)
+        if model_name == "Ensembled_model":
+            predictions = ensembled.predict(img_array)
 
-        predictions = model.predict(img_array)
         score = tf.nn.sigmoid(predictions[0])
 
         # Get the predicted class and confidence score
